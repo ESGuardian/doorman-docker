@@ -11,18 +11,17 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
               nodejs \
               nodejs-npm \
               postgresql-dev \
-              pip3 \
               python3 \
-              python-dev \
+              python3-dev \
               redis \
               runit \
+  && python3 -m ensurepip \
   && pip3 install --upgrade pip setuptools\
   && npm install -g bower less \
   && rm /var/cache/apk/*
   
 # Make some useful symlinks that are expected to exist
 RUN cd /usr/bin \
-  && ln -sf easy_install-2.7 easy_install \
   && ln -sf python3 python \
   && ln -sf python3-config python-config \
   && ln -sf pip3 pip
